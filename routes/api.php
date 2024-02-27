@@ -21,7 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::prefix('V1')->group(function(){
+Route::middleware('auth:sanctum')->prefix('V1')->group(function(){
     Route::apiResource('/tasks',TaskController::class);
     Route::patch('/tasks/{task}/complete', CompleteTaskController::class);
 });
